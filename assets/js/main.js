@@ -41,6 +41,27 @@ const songs = [
     path: "./assets/songs/mrmsc.mp3",
     art: "./assets/images/mrmsc.jpg",
   },
+  {
+    id: 7,
+    name: "You Of Yesterday",
+    author: "Sơn Tùng MTP",
+    path: "./assets/songs/yoy.mp3",
+    art: "./assets/images/yoy.jpg",
+  },
+  {
+    id: 8,
+    name: "Một Năm Mới Bình An",
+    author: "Sơn Tùng MTP",
+    path: "./assets/songs/mnmba.mp3",
+    art: "./assets/images/mnmba.jpg",
+  },
+  {
+    id: 9,
+    name: "Âm Thầm Bên Em",
+    author: "Sơn Tùng MTP",
+    path: "./assets/songs/atbe.mp3",
+    art: "./assets/images/atbe.jpg",
+  },
 ];
 let song_art = document.querySelector(".song-art-item");
 let song_name = document.querySelector(".song-info h4");
@@ -186,6 +207,7 @@ function nextSong() {
   text_animation.innerHTML = songs[index].name;
   audio.play();
 }
+
 function displayTimer() {
   const { duration, currentTime } = audio;
   song_range.max = duration;
