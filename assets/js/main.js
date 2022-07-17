@@ -48,6 +48,9 @@ let song_author = document.querySelector(".song-info h5");
 let song_minutes = document.querySelector(".song-minutes");
 let song_seconds = document.querySelector(".song-seconds");
 let song_range = document.querySelector(".song-range-item");
+let text_animation = document.querySelector(".text-animation");
+let duration_time = document.querySelector(".durationTime");
+let current_time = document.querySelector(".currentTime");
 
 let prev_btn = document.querySelector(".prev-btn");
 let play_btn = document.querySelector(".play-btn");
@@ -87,18 +90,26 @@ function renderFirstSong() {
   song_art.setAttribute("src", firstSong.art);
   song_name.innerHTML = firstSong.name;
   song_author.innerHTML = firstSong.author;
+  text_animation.innerHTML = firstSong.name;
   audio.src = firstSong.path;
 }
 
+displayTimer();
+let timer = setInterval(displayTimer, 500);
 function handleEvents() {
   // Nút Play
   play_btn.onclick = () => {
     if (isPlaying) {
       audio.play();
+      timer = setInterval(displayTimer, 500);
+      console.log(timer);
     } else {
       audio.pause();
+      clearInterval(timer);
+      console.log(timer);
     }
   };
+
   audio.onplay = () => {
     song_art.classList.remove("pause");
     song_art.classList.add("play");
@@ -121,6 +132,7 @@ function handleEvents() {
     song_name.innerHTML = songs[index].name;
     song_author.innerHTML = songs[index].author;
     audio.src = songs[index].path;
+    text_animation.innerHTML = songs[index].name;
     audio.play();
   };
   //   Phát bài tiếp theo
@@ -133,6 +145,7 @@ function handleEvents() {
     song_name.innerHTML = songs[index].name;
     song_author.innerHTML = songs[index].author;
     audio.src = songs[index].path;
+    text_animation.innerHTML = songs[index].name;
     audio.play();
   };
   // Nút lặp lại
@@ -148,8 +161,8 @@ function handleEvents() {
     }
   };
   song_range.onchange = (e) => {
-    let tongsogiay = Math.floor(audio.duration);
-    console.log(tongsogiay);
+    audio.currentTime = e.target.value;
+    // audio.play();
   };
 }
 
@@ -160,8 +173,29 @@ function handlePlay(id) {
     song_name.innerHTML = songs[id].name;
     song_author.innerHTML = songs[id].author;
     audio.src = songs[id].path;
+    text_animation.innerHTML = songs[id].name;
     audio.play();
   }
+}
+
+function displayTimer() {
+  const { duration, currentTime } = audio;
+  song_range.max = duration;
+  song_range.value = currentTime;
+  current_time.innerHTML = formatTimeer(currentTime);
+  if (!duration) {
+    duration_time.innerHTML = "00:00";
+  } else {
+    duration_time.innerHTML = formatTimeer(duration);
+  }
+}
+
+function formatTimeer(number) {
+  const minutes = Math.floor(number / 60);
+  const seconds = Math.floor(number - minutes * 60);
+  return `${minutes < 10 ? "0" + minutes : minutes}:${
+    seconds < 10 ? "0" + seconds : seconds
+  }`;
 }
 
 renderFirstSong();

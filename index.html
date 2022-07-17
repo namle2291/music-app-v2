@@ -14,7 +14,7 @@
     <div class="app">
         <div class="app-header">
             <i class="fas fa-angle-down"></i>
-            <h4>Now Playing</h4>
+            <marquee class="text-animation">Now Playing</marquee>
             <label class="btn-list" for="list-input">
                 <i class="fas fa-list"></i>
             </label>
@@ -34,10 +34,11 @@
                 <h5></h5>
             </div>
             <div class="song-range">
-                <input class="song-range-item" min="0" max="100" type="range">
+                <input class="song-range-item" type="range">
             </div>
             <div class="song-times">
-                00:00
+                <div class="durationTime"></div>
+                <div class="currentTime"></div>
             </div>
             <div class="song-button">
                 <div class="loop-btn">

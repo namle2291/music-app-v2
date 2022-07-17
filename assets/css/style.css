@@ -29,9 +29,12 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 10px 12px;
-    color: gray;
+    -webkit-tap-highlight-color: transparent;
 }
-
+.text-animation{
+    margin: 0 20px;
+    font-size: 15px;
+}
 .song-art,
 .song-info,
 .song-range,
@@ -76,6 +79,7 @@ body {
 
 .song-times {
     display: flex;
+    justify-content: space-between;
     font-size: 13px;
 }
 
@@ -98,9 +102,11 @@ body {
     color: white;
     cursor: pointer;
     box-shadow: 0 0 5px #333;
+    -webkit-tap-highlight-color: transparent;
 }
 .loop-btn, .random-btn{
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 .list-music {
     width: 85%;
