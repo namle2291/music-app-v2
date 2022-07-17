@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="app">
+        <div class="app-header">
+            <i class="fas fa-angle-down"></i>
+            <h4>Now Playing</h4>
+            <label class="btn-list" for="list-input">
+                <i class="fas fa-list"></i>
+            </label>
+            <input type="checkbox" hidden id="list-input">
+            <div class="list-music">
+
+            </div>
+            <label for="list-input" class="overlay"></label>
+        </div>
+        <div class="app-content">
+            <div class="song-art">
+                <img src="https://cdn.pixabay.com/photo/2012/04/13/13/23/disc-32390_640.png" alt=""
+                    class="song-art-item">
+            </div>
+            <div class="song-info">
+                <h4></h4>
+                <h5></h5>
+            </div>
+            <div class="song-range">
+                <input class="song-range-item" min="0" max="100" type="range">
+            </div>
+            <div class="song-times">
+                00:00
+            </div>
+            <div class="song-button">
+                <div class="loop-btn">
+                    <i class="fas fa-undo"></i>
+                </div>
+                <div class="prev-btn">
+                    <i class="fas fa-backward"></i>
+                </div>
+                <div class="play-btn">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                <div class="next-btn">
+                    <i class="fas fa-forward"></i>
+                </div>
+                <div class="random-btn">
+                    <i class="fas fa-random"></i>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <audio class="audio" hidden src="" controls></audio>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
