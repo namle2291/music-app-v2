@@ -95,18 +95,19 @@ function renderFirstSong() {
 }
 
 displayTimer();
-let timer = setInterval(displayTimer, 500);
+let timer = setInterval(() => {
+  displayTimer();
+  if (audio.ended) {
+    nextSong();
+  }
+}, 1000);
 function handleEvents() {
   // Nút Play
   play_btn.onclick = () => {
     if (isPlaying) {
       audio.play();
-      timer = setInterval(displayTimer, 500);
-      console.log(timer);
     } else {
       audio.pause();
-      clearInterval(timer);
-      console.log(timer);
     }
   };
 
@@ -115,38 +116,22 @@ function handleEvents() {
     song_art.classList.add("play");
     play_btn.children[0].setAttribute("class", "fas fa-pause-circle");
     isPlaying = false;
+    timer = setInterval(displayTimer, 1000);
   };
   audio.onpause = () => {
     song_art.classList.add("pause");
     play_btn.children[0].setAttribute("class", "fas fa-play-circle");
     isPlaying = true;
+    clearInterval(timer);
   };
   let cc = 0;
   // Phát bài trước đó
   prev_btn.onclick = () => {
-    index--;
-    if (index < 0) {
-      index = songs.length - 1;
-    }
-    song_art.setAttribute("src", songs[index].art);
-    song_name.innerHTML = songs[index].name;
-    song_author.innerHTML = songs[index].author;
-    audio.src = songs[index].path;
-    text_animation.innerHTML = songs[index].name;
-    audio.play();
+    prevSong();
   };
   //   Phát bài tiếp theo
   next_btn.onclick = () => {
-    index++;
-    if (index >= songs.length) {
-      index = 0;
-    }
-    song_art.setAttribute("src", songs[index].art);
-    song_name.innerHTML = songs[index].name;
-    song_author.innerHTML = songs[index].author;
-    audio.src = songs[index].path;
-    text_animation.innerHTML = songs[index].name;
-    audio.play();
+    nextSong();
   };
   // Nút lặp lại
   loop_btn.onclick = () => {
@@ -177,7 +162,30 @@ function handlePlay(id) {
     audio.play();
   }
 }
-
+function prevSong() {
+  index--;
+  if (index < 0) {
+    index = songs.length - 1;
+  }
+  song_art.setAttribute("src", songs[index].art);
+  song_name.innerHTML = songs[index].name;
+  song_author.innerHTML = songs[index].author;
+  audio.src = songs[index].path;
+  text_animation.innerHTML = songs[index].name;
+  audio.play();
+}
+function nextSong() {
+  index++;
+  if (index >= songs.length) {
+    index = 0;
+  }
+  song_art.setAttribute("src", songs[index].art);
+  song_name.innerHTML = songs[index].name;
+  song_author.innerHTML = songs[index].author;
+  audio.src = songs[index].path;
+  text_animation.innerHTML = songs[index].name;
+  audio.play();
+}
 function displayTimer() {
   const { duration, currentTime } = audio;
   song_range.max = duration;

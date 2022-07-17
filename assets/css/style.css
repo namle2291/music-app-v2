@@ -19,7 +19,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 12px;
-    box-shadow: 0 5px 15px #a3a3a3;
+    box-shadow: 0 5px 15px #555;
     overflow: hidden;
     background-color: white;
 }
@@ -31,10 +31,12 @@ body {
     padding: 10px 12px;
     -webkit-tap-highlight-color: transparent;
 }
-.text-animation{
+
+.text-animation {
     margin: 0 20px;
     font-size: 15px;
 }
+
 .song-art,
 .song-info,
 .song-range,
@@ -48,7 +50,7 @@ body {
     width: 200px;
     height: 200px;
     margin: auto;
-    box-shadow: 0 0 10px #dadada;
+    box-shadow: 0 0 10px #333;
     border-radius: 50%;
 }
 
@@ -81,6 +83,7 @@ body {
     display: flex;
     justify-content: space-between;
     font-size: 13px;
+    margin-top: 10px;
 }
 
 .song-button {
@@ -104,10 +107,13 @@ body {
     box-shadow: 0 0 5px #333;
     -webkit-tap-highlight-color: transparent;
 }
-.loop-btn, .random-btn{
+
+.loop-btn,
+.random-btn {
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
 }
+
 .list-music {
     width: 85%;
     position: absolute;
@@ -123,6 +129,7 @@ body {
     overflow-y: scroll;
 
 }
+
 .list-item {
     margin-bottom: 3px;
     display: flex;
@@ -155,25 +162,32 @@ body {
 .btn-list {
     cursor: pointer;
 }
-.overlay{
+
+.btn-list:hover {
+    color: blue;
+}
+
+.overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
     z-index: 1;
     display: none;
 }
 
 /* Xử lý khi click vào btn list */
-#list-input:checked ~ .list-music {
+#list-input:checked~.list-music {
     transform: translateX(0%);
 }
-#list-input:checked ~ .overlay{
+
+#list-input:checked~.overlay {
     display: block;
     animation: faceIn .3s linear;
 }
+
 /* Animation */
 .play {
     animation: rotate 10s linear infinite;
@@ -192,30 +206,54 @@ body {
         transform: rotate(360deg);
     }
 }
+
 @keyframes faceIn {
-    from{
+    from {
         opacity: 0;
     }
-    to{
+
+    to {
         opacity: 1;
     }
 }
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
     background: #888;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: cadetblue;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 15rem;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 5px;
+    background-color: gray;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #333;
+    border: 3px solid white;
+    border-radius: 50%;
+    margin-top: -7px;
 }
