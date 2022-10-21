@@ -93,6 +93,7 @@ let song_range = document.querySelector(".song-range-item");
 let text_animation = document.querySelector(".text-animation");
 let duration_time = document.querySelector(".durationTime");
 let current_time = document.querySelector(".currentTime");
+let volume = document.querySelector('.song-volume-input');
 
 let prev_btn = document.querySelector(".prev-btn");
 let play_btn = document.querySelector(".play-btn");
@@ -191,6 +192,12 @@ function handleEvents() {
     audio.currentTime = e.target.value;
     // audio.play();
   };
+  // Thay đổi âm lượng
+  volume.onchange = (e)=>{
+    let currentVolume = e.target.value / 100;
+    audio.volume = currentVolume;
+    console.log(currentVolume);
+  }
 }
 
 function handlePlay(id) {

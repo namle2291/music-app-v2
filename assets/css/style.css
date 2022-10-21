@@ -59,6 +59,7 @@ body {
 .song-art .song-art-item {
     width: 100%;
     height: 100%;
+    box-shadow: 0 0 15px black;
     border-radius: 50%;
 }
 
@@ -71,7 +72,16 @@ body {
     margin-top: 5px;
     color: gray;
 }
-
+.song-volume{
+    display: flex;
+    justify-content: end;
+    padding: 10px 12px;
+    color: white;
+}
+.song-volume .song-volume-input{
+    width: 100px;
+    margin-left: 5px;
+}
 .song-range .song-range-item {
     width: 100%;
 }
@@ -252,12 +262,12 @@ input[type="range"]::-webkit-slider-runnable-track {
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 20px;
-    height: 20px;
-    background-color: #333;
+    width: 15px;
+    height: 15px;
+    background-color: green;
     border: 3px solid white;
     border-radius: 50%;
-    margin-top: -7px;
+    margin-top: -5px;
 }
 @media (max-width: 740px) {
     .app{
