@@ -94,6 +94,7 @@ let text_animation = document.querySelector(".text-animation");
 let duration_time = document.querySelector(".durationTime");
 let current_time = document.querySelector(".currentTime");
 let volume = document.querySelector('.song-volume-input');
+let volume_icon = document.querySelector('#song-volume-icon');
 
 let prev_btn = document.querySelector(".prev-btn");
 let play_btn = document.querySelector(".play-btn");
@@ -197,6 +198,11 @@ function handleEvents() {
   volume.onchange = (e)=>{
     let currentVolume = e.target.value / 100;
     audio.volume = currentVolume;
+    if(e.target.value == 0){
+      volume_icon.setAttribute('class','fas fa-volume-mute');
+    }else{
+      volume_icon.setAttribute('class','fas fa-volume-up');
+    }
   }
 }
 
