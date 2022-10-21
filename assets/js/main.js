@@ -135,6 +135,7 @@ function renderFirstSong() {
   song_author.innerHTML = firstSong.author;
   text_animation.innerHTML = firstSong.name;
   audio.src = firstSong.path;
+  volume.value = 100;
 }
 
 displayTimer();
@@ -196,7 +197,6 @@ function handleEvents() {
   volume.onchange = (e)=>{
     let currentVolume = e.target.value / 100;
     audio.volume = currentVolume;
-    console.log(currentVolume);
   }
 }
 
