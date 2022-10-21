@@ -24,7 +24,7 @@ const songs = [
     id: 4,
     name: "Chúng Ta Của Hiện Tại",
     author: "Sơn Tùng MTP",
-    path: "./assets/songs/ctcht.mp3",
+    path: "./assets/songs/ctcht.m4a",
     art: "./assets/images/ctcht.jpg",
   },
   {
@@ -61,6 +61,27 @@ const songs = [
     author: "Sơn Tùng MTP",
     path: "./assets/songs/atbe.mp3",
     art: "./assets/images/atbe.jpg",
+  },
+  {
+    id: 10,
+    name: "There's No One At All",
+    author: "Sơn Tùng MTP",
+    path: "./assets/songs/noaa.mp3",
+    art: "./assets/images/noaa.jpg",
+  },
+  {
+    id: 11,
+    name: "Cơn mưa xa dần",
+    author: "Sơn Tùng MTP",
+    path: "./assets/songs/cmxd.mp3",
+    art: "./assets/images/cmxd.jpg",
+  },
+  {
+    id: 12,
+    name: "Nắng ấm ngang qua",
+    author: "Sơn Tùng MTP",
+    path: "./assets/songs/nanq.mp3",
+    art: "./assets/images/cmxd.jpg",
   },
 ];
 let song_art = document.querySelector(".song-art-item");
@@ -163,7 +184,7 @@ function handleEvents() {
     } else {
       audio.loop = false;
       isLoop = true;
-      loop_btn.style.color = "black";
+      loop_btn.style.color = "white";
     }
   };
   song_range.onchange = (e) => {
