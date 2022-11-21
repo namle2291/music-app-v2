@@ -9,7 +9,7 @@ body {
     width: 100vw;
     height: 100vh;
     font-family: Arial;
-    background: url('https://wallpaperaccess.com/full/775146.gif') no-repeat center center fixed;
+    background: url('https://cdnb.artstation.com/p/assets/images/images/029/320/295/original/bogdan-mb0sco-coffeeanim.gif?1601147277') no-repeat center center fixed;
     background-size: cover;
 }
 .app {
@@ -22,7 +22,7 @@ body {
     border-radius: 12px;
     box-shadow: inset 0 5px 15px #00000070;
     overflow: hidden;
-    background-color: rgb(0 0 0 / 30%);
+    background-color: rgb(0 0 0 / 50%);
 }
 
 .app-header {

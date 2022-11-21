@@ -83,6 +83,13 @@ const songs = [
     path: "./assets/songs/nanq.mp3",
     art: "./assets/images/cmxd.jpg",
   },
+  {
+    id: 13,
+    name: "There's No One At All - Piano Version",
+    author: "Sơn Tùng MTP",
+    path: "./assets/songs/noaa1.mp3",
+    art: "./assets/images/noaa1.jpg",
+  },
 ];
 let song_art = document.querySelector(".song-art-item");
 let song_name = document.querySelector(".song-info h4");
