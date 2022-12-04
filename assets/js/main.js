@@ -1,94 +1,105 @@
 const songs = [
   {
-    id: 1,
     name: "Có Chắc Yêu Là Đây",
     author: "Sơn Tùng MTP",
     path: "./assets/songs/ccyld1.m4a",
     art: "./assets/images/ccyld1.jpg",
   },
   {
-    id: 2,
+    name: "Nơi này có anh",
+    author: "Sơn Tùng MTP",
+    path: "./assets/songs/nnca.mp3",
+    art: "./assets/images/nnca.jpg",
+  },
+  {
     name: "Có Chắc Yêu Là Đây - Onionn Remix",
     author: "Sơn Tùng MTP",
     path: "./assets/songs/ccyld.mp3",
     art: "./assets/images/ccyld.jpg",
   },
   {
-    id: 3,
     name: "Cơn Mưa Ngang Qua - Disco Ver",
     author: "Sơn Tùng MTP",
     path: "./assets/songs/cmnq.mp3",
     art: "./assets/images/cmnq.png",
   },
   {
-    id: 4,
     name: "Chúng Ta Của Hiện Tại",
     author: "Sơn Tùng MTP",
     path: "./assets/songs/ctcht.m4a",
     art: "./assets/images/ctcht.jpg",
   },
   {
-    id: 5,
     name: "Em Của Ngày Hôm Qua",
     author: "Sơn Tùng MTP",
     path: "./assets/songs/ecnhq.mp3",
     art: "./assets/images/ecnhq.png",
   },
   {
-    id: 6,
     name: "Muộn Rồi Mà Sao Còn",
     author: "Sơn Tùng MTP",
     path: "./assets/songs/mrmsc.mp3",
     art: "./assets/images/mrmsc.jpg",
   },
   {
-    id: 7,
     name: "You Of Yesterday",
     author: "Sơn Tùng MTP",
     path: "./assets/songs/yoy.mp3",
     art: "./assets/images/yoy.jpg",
   },
   {
-    id: 8,
     name: "Một Năm Mới Bình An",
     author: "Sơn Tùng MTP",
     path: "./assets/songs/mnmba.mp3",
     art: "./assets/images/mnmba.jpg",
   },
   {
-    id: 9,
     name: "Âm Thầm Bên Em",
     author: "Sơn Tùng MTP",
     path: "./assets/songs/atbe.mp3",
     art: "./assets/images/atbe.jpg",
   },
   {
-    id: 10,
+    name: "Muộn rồi mà sao còn - Disco Version",
+    author: "Sơn Tùng MTP",
+    path: "./assets/songs/mrmsc1.mp3",
+    art: "./assets/images/mrmsc.png",
+  },
+  {
     name: "There's No One At All",
     author: "Sơn Tùng MTP",
     path: "./assets/songs/noaa.mp3",
     art: "./assets/images/noaa.jpg",
   },
   {
-    id: 11,
     name: "Cơn mưa xa dần",
     author: "Sơn Tùng MTP",
     path: "./assets/songs/cmxd.mp3",
     art: "./assets/images/cmxd.jpg",
   },
   {
-    id: 12,
     name: "Nắng ấm ngang qua",
     author: "Sơn Tùng MTP",
     path: "./assets/songs/nanq.mp3",
     art: "./assets/images/cmxd.jpg",
   },
   {
-    id: 13,
     name: "There's No One At All - Piano Version",
     author: "Sơn Tùng MTP",
     path: "./assets/songs/noaa1.mp3",
     art: "./assets/images/noaa1.jpg",
+  },
+  {
+    name: "Em của ngày hôm qua",
+    author: "Sơn Tùng MTP",
+    path: "./assets/songs/ecnhq1.mp3",
+    art: "./assets/images/ecnhq1.jpg",
+  },
+  {
+    name: "Chúng ta không thuộc về nhau",
+    author: "Sơn Tùng MTP",
+    path: "./assets/songs/ctktvn.mp3",
+    art: "./assets/images/ctktvn.jpg",
   },
 ];
 let song_art = document.querySelector(".song-art-item");
@@ -113,11 +124,11 @@ let audio = document.querySelector("audio");
 let list_music = document.querySelector(".list-music");
 
 function renderList() {
-  let html = songs.map((e) => {
+  let html = songs.map((e, index) => {
     return `
       <label for="list-input" class="list-item" onclick="handlePlay(${
-        e.id - 1
-      })" key="${e.id}">
+        index
+      })" key="${index}">
               <div class="list-avatar">
                   <img class="list-avatar-item"
                   src="${e.art}" alt="">

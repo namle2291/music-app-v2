@@ -9,7 +9,7 @@ body {
     width: 100vw;
     height: 100vh;
     font-family: Arial;
-    background: url('https://cdnb.artstation.com/p/assets/images/images/029/320/295/original/bogdan-mb0sco-coffeeanim.gif?1601147277') no-repeat center center fixed;
+    background: url('https://cdnb.artstation.com/p/assets/images/images/046/365/751/large/antonio-campo-dp-practice.jpg?1644946380') no-repeat center center fixed;
     background-size: cover;
 }
 .app {
@@ -160,7 +160,8 @@ body {
 }
 
 .list-avatar-item {
-    width: 100%;
+    width: 50px;
+    height: 50px;
 }
 
 .list-info {
