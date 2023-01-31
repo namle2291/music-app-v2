@@ -9,8 +9,9 @@ body {
     width: 100vw;
     height: 100vh;
     font-family: Arial;
-    background: url('/assets/images/bg.jfif') no-repeat center center fixed;
+    background: url('https://anhdepfree.com/wp-content/uploads/2018/10/Wallpaper-4K-dep-22.jpg') no-repeat center center fixed;
     background-size: cover;
+    
 }
 .app {
     width: 350px;
