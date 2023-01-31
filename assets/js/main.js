@@ -1,5 +1,23 @@
 const songs = [
   {
+    name: "Intro - Sky Decade",
+    author: "Sơn Tùng MTP",
+    path: "./assets/songs/intro.mp3",
+    art: "./assets/images/intro.jpg",
+  },
+  {
+    name: "Cơn mưa xa dần",
+    author: "Sơn Tùng MTP",
+    path: "./assets/songs/cmxd.mp3",
+    art: "./assets/images/intro.jpg",
+  },
+  {
+    name: "Nắng ấm ngang qua",
+    author: "Sơn Tùng MTP",
+    path: "./assets/songs/nanq.mp3",
+    art: "./assets/images/intro.jpg",
+  },
+  {
     name: "Có Chắc Yêu Là Đây",
     author: "Sơn Tùng MTP",
     path: "./assets/songs/ccyld1.m4a",
@@ -72,18 +90,6 @@ const songs = [
     art: "./assets/images/noaa.jpg",
   },
   {
-    name: "Cơn mưa xa dần",
-    author: "Sơn Tùng MTP",
-    path: "./assets/songs/cmxd.mp3",
-    art: "./assets/images/cmxd.jpg",
-  },
-  {
-    name: "Nắng ấm ngang qua",
-    author: "Sơn Tùng MTP",
-    path: "./assets/songs/nanq.mp3",
-    art: "./assets/images/cmxd.jpg",
-  },
-  {
     name: "There's No One At All - Piano Version",
     author: "Sơn Tùng MTP",
     path: "./assets/songs/noaa1.mp3",
@@ -93,7 +99,7 @@ const songs = [
     name: "Em của ngày hôm qua",
     author: "Sơn Tùng MTP",
     path: "./assets/songs/ecnhq1.mp3",
-    art: "./assets/images/ecnhq1.jpg",
+    art: "./assets/images/ecnhq1.png",
   },
   {
     name: "Chúng ta không thuộc về nhau",
