@@ -170,6 +170,7 @@ let timer = setInterval(() => {
     nextSong();
   }
 }, 1000);
+
 function handleEvents() {
   // Nút Play
   play_btn.onclick = () => {
@@ -226,6 +227,19 @@ function handleEvents() {
       volume_icon.setAttribute('class','fas fa-volume-mute');
     }else{
       volume_icon.setAttribute('class','fas fa-volume-up');
+    }
+  }
+  // Khi nhấn space
+  window.onkeydown = (e)=>{
+    switch(e.keyCode){
+      case 32:
+        if(!isPlaying){
+          audio.pause();
+          isPlaying = false;
+        }else{
+          audio.play();
+          isPlaying = true;
+        }
     }
   }
 }
