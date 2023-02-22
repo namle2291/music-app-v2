@@ -170,7 +170,9 @@ let list_music = document.querySelector(".list-music");
 let choose_theme = document.querySelector(".choose-theme");
 
 var index = 0;
+let currentVolume = 0;
 let isPlaying = true;
+let isMute = true;
 let isLoop = true;
 let firstSong = songs[index];
 
@@ -290,12 +292,23 @@ function handleEvents() {
   };
   // Thay đổi âm lượng
   volume.onchange = (e)=>{
-    let currentVolume = e.target.value / 100;
+    currentVolume = e.target.value / 100;
     audio.volume = currentVolume;
     if(e.target.value == 0){
       volume_icon.setAttribute('class','fas fa-volume-mute');
     }else{
       volume_icon.setAttribute('class','fas fa-volume-up');
+    }
+  }
+  volume_icon.onclick = (e)=>{
+    if(isMute){
+      e.target.setAttribute('class','fas fa-volume-mute');
+      audio.volume = 0;
+      isMute = false ;
+    }else{
+      e.target.setAttribute('class','fas fa-volume-up');
+      audio.volume = currentVolume;
+      isMute = true;
     }
   }
   // Khi nhấn space

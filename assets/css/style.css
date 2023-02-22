@@ -78,6 +78,9 @@ body {
     padding: 10px 12px;
     color: black;
 }
+#song-volume-icon{
+    cursor: pointer;
+}
 .song-volume .song-volume-input{
     width: 100px;
     margin-left: 5px;
