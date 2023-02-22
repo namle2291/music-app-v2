@@ -108,6 +108,44 @@ const songs = [
     art: "./assets/images/ctktvn.jpg",
   },
 ];
+const colorTheme = [
+  {
+    "from": "#4facfe",
+    "to": "#00f2fe",
+  },
+  {
+    "from": "#cd9cf2",
+    "to": "#f6f3ff",
+  },
+  {
+    "from": "#8EC5FC",
+    "to": "#E0C3FC",
+  },
+  {
+    "from": "#CE9FFC",
+    "to": "#7367F0",
+  },
+  {
+    "from": "#2af598",
+    "to": "#009efd",
+  },
+  {
+    "from": "#434343",
+    "to": "#ffffff",
+  },
+  {
+    "from": "#f9d423",
+    "to": "#ff4e50",
+  },
+  {
+    "from": "#00dbde",
+    "to": "#fc00ff",
+  },
+  {
+    "from": "#65799b",
+    "to": "#5e2563",
+  },
+];
 let song_art = document.querySelector(".song-art-item");
 let song_name = document.querySelector(".song-info h4");
 let song_author = document.querySelector(".song-info h5");
@@ -129,6 +167,13 @@ let random_btn = document.querySelector(".random-btn");
 let audio = document.querySelector("audio");
 let list_music = document.querySelector(".list-music");
 
+let choose_theme = document.querySelector(".choose-theme");
+
+var index = 0;
+let isPlaying = true;
+let isLoop = true;
+let firstSong = songs[index];
+
 function renderList() {
   let html = songs.map((e, index) => {
     return `
@@ -149,18 +194,42 @@ function renderList() {
   list_music.innerHTML = html.join(" ");
 }
 
-var index = 0;
-let isPlaying = true;
-let isLoop = true;
-let firstSong = songs[index];
 
 function renderFirstSong() {
-  song_art.setAttribute("src", firstSong.art);
-  song_name.innerHTML = firstSong.name;
-  song_author.innerHTML = firstSong.author;
-  text_animation.innerHTML = firstSong.name;
-  audio.src = firstSong.path;
-  volume.value = 100;
+  let currentTheme = JSON.parse(localStorage.getItem("theme"));
+  let currentIndex = JSON.parse(localStorage.getItem("currentIndex"));
+  if(currentTheme!=null){
+    document.body.style.background = "linear-gradient(" + "45deg," + `${currentTheme.from}` + "," + `${currentTheme.to}` + ")";
+  }
+  if(currentIndex!=null){
+    song_art.setAttribute("src", songs[currentIndex].art);
+    song_name.innerHTML = songs[currentIndex].name;
+    song_author.innerHTML = songs[currentIndex].author;
+    text_animation.innerHTML = songs[currentIndex].name;
+    audio.src = songs[currentIndex].path;
+    volume.value = 100;
+  }else{
+    song_art.setAttribute("src", firstSong.art);
+    song_name.innerHTML = firstSong.name;
+    song_author.innerHTML = firstSong.author;
+    text_animation.innerHTML = firstSong.name;
+    audio.src = firstSong.path;
+    volume.value = 100;
+  }
+}
+
+function renderColorItem(){
+  colorTheme.map((e,index)=>{
+    const color_item = document.createElement('div');
+    color_item.classList.add('color-item');
+    choose_theme.append(color_item);
+    color_item.style.background = 'linear-gradient(to right,'+ `${e.from}` + ',' + `${e.to}` + ')';
+  })
+}
+
+function getCurrentSong(){
+  let indexCurrent = index;
+  localStorage.setItem("currentIndex", JSON.stringify(indexCurrent));
 }
 
 displayTimer();
@@ -180,13 +249,13 @@ function handleEvents() {
       audio.pause();
     }
   };
-
   audio.onplay = () => {
     song_art.classList.remove("pause");
     song_art.classList.add("play");
     play_btn.children[0].setAttribute("class", "fas fa-pause-circle");
     isPlaying = false;
     timer = setInterval(displayTimer, 1000);
+    getCurrentSong();
   };
   audio.onpause = () => {
     song_art.classList.add("pause");
@@ -212,7 +281,7 @@ function handleEvents() {
     } else {
       audio.loop = false;
       isLoop = true;
-      loop_btn.style.color = "white";
+      loop_btn.style.color = "black";
     }
   };
   song_range.onchange = (e) => {
@@ -232,7 +301,7 @@ function handleEvents() {
   // Khi nhấn space
   window.onkeydown = (e)=>{
     switch(e.keyCode){
-      case 32:
+      case 32: // 32=> Space
         if(!isPlaying){
           audio.pause();
           isPlaying = false;
@@ -242,6 +311,12 @@ function handleEvents() {
         }
     }
   }
+  let list_color = document.querySelectorAll('.color-item');
+  list_color.forEach((e,index) => {
+    e.onclick = ()=>{
+      chooseTheme(index);
+    }
+  });
 }
 
 function handlePlay(id) {
@@ -255,6 +330,7 @@ function handlePlay(id) {
     audio.play();
   }
 }
+
 function prevSong() {
   index--;
   if (index < 0) {
@@ -300,7 +376,15 @@ function formatTimeer(number) {
   }`;
 }
 
+function chooseTheme(id){
+  let {from,to} = colorTheme[id];
+  document.body.style.background = "linear-gradient(" + "45deg," + `${from}` + "," + `${to}` + ")";
+  let currentTheme = {from, to};
+  localStorage.setItem("theme", JSON.stringify(currentTheme));
+}
+
 renderFirstSong();
+renderColorItem();
 renderList();
 handleEvents();
 handlePlay();

@@ -1,73 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LSN - Music App V2</title>
-    <link rel="icon" href="https://scontent.fvca1-3.fna.fbcdn.net/v/t39.30808-6/253805501_1110233596439222_954872362996586157_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=KPGcqf7GOTsAX8fFN-h&tn=UVscrhL2yJqWpIMy&_nc_ht=scontent.fvca1-3.fna&oh=00_AT8YTW7Cv-riiXCt5vIrCwq_igd3kLP4-cK-heHcZHNZOw&oe=63571AD0">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-</head>
+    <link
+      rel="icon"
+      href="https://scontent.fvca1-3.fna.fbcdn.net/v/t39.30808-6/253805501_1110233596439222_954872362996586157_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=KPGcqf7GOTsAX8fFN-h&tn=UVscrhL2yJqWpIMy&_nc_ht=scontent.fvca1-3.fna&oh=00_AT8YTW7Cv-riiXCt5vIrCwq_igd3kLP4-cK-heHcZHNZOw&oe=63571AD0"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+  </head>
 
-<body>
+  <body>
     <div class="app">
-        <div class="app-header">
-            <img src="https://t4.ftcdn.net/jpg/05/08/51/21/360_F_508512148_OoGzpyoB8ZGbKWRg42hafr22ucjCC1EG.jpg" style="border-radius: 50%;" width="50" height="50" alt="">
-            <marquee class="text-animation"></marquee>
-            <label class="btn-list" for="list-input">
-                <i class="fas fa-list"></i>
-            </label>
-            <input type="checkbox" hidden id="list-input">
-            <div class="list-music">
-
-            </div>
-            <label for="list-input" class="overlay"></label>
+      <div class="app-header">
+        <img
+          src="https://t4.ftcdn.net/jpg/05/08/51/21/360_F_508512148_OoGzpyoB8ZGbKWRg42hafr22ucjCC1EG.jpg"
+          style="border-radius: 50%"
+          width="50"
+          height="50"
+          alt=""
+        />
+        <marquee class="text-animation"></marquee>
+        <label class="btn-chosee-theme" for="choose-theme-input" style="margin-right: 10px;">
+          <i class="fas fa-t-shirt"></i>
+        </label>
+        <label class="btn-list" for="list-input">
+          <i class="fas fa-list"></i>
+        </label>
+        
+        <input type="checkbox" hidden id="choose-theme-input" />
+        <div class="choose-theme">
+            
         </div>
-        <div class="app-content">
-            <div class="song-art">
-                <img src="https://cdn.pixabay.com/photo/2012/04/13/13/23/disc-32390_640.png" alt=""
-                    class="song-art-item">
-            </div>
-            <div class="song-info">
-                <h4></h4>
-                <h5></h5>
-            </div>
-            <div class="song-volume">
-                <i class="fas fa-volume-up" id="song-volume-icon"></i>
-                <input class="song-volume-input" type="range">
-            </div>
-            <div class="song-range">
-                <input class="song-range-item" type="range">
-            </div>
-            <div class="song-times">
-                <div class="durationTime"></div>
-                <div class="currentTime"></div>
-            </div>
-            <div class="song-button">
-                <div class="loop-btn">
-                    <i class="fas fa-undo"></i>
-                </div>
-                <div class="prev-btn">
-                    <i class="fas fa-hand-point-left"></i>
-                </div>
-                <div class="play-btn">
-                    <i class="fas fa-play-circle"></i>
-                </div>
-                <div class="next-btn">
-                    <i class="fas fa-hand-point-right"></i>
-                </div>
-                <div class="random-btn">
-                    <i class="fas fa-random"></i>
-                </div>
-            </div>
-            <div style="text-align: center;">
-                <audio class="audio" hidden src="" controls></audio>
-            </div>
+        <input type="checkbox" hidden id="list-input" />
+        <div class="list-music"></div>
+        <label for="list-input" class="overlay"></label>
+      </div>
+      <div class="app-content">
+        <div class="song-art">
+          <img
+            src="https://cdn.pixabay.com/photo/2012/04/13/13/23/disc-32390_640.png"
+            alt=""
+            class="song-art-item"
+          />
         </div>
+        <div class="song-info">
+          <h4></h4>
+          <h5></h5>
+        </div>
+        <div class="song-range">
+          <input class="song-range-item" type="range" />
+        </div>
+        <div class="song-volume">
+            <i class="fas fa-volume-up" id="song-volume-icon"></i>
+            <input class="song-volume-input" type="range" />
+        </div>
+        <div class="song-times">
+          <div class="durationTime"></div>
+          <div class="currentTime"></div>
+        </div>
+        <div class="song-button">
+          <div class="loop-btn">
+            <i class="fas fa-undo"></i>
+          </div>
+          <div class="prev-btn">
+            <i class="fas fa-hand-point-left"></i>
+          </div>
+          <div class="play-btn">
+            <i class="fas fa-play-circle"></i>
+          </div>
+          <div class="next-btn">
+            <i class="fas fa-hand-point-right"></i>
+          </div>
+          <div class="random-btn">
+            <i class="fas fa-random"></i>
+          </div>
+        </div>
+        <div style="text-align: center">
+          <audio class="audio" hidden src="" controls></audio>
+        </div>
+      </div>
     </div>
     <script src="assets/js/main.js"></script>
-</body>
-
+  </body>
 </html>
