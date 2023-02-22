@@ -24,10 +24,10 @@ const songs = [
     art: "./assets/images/ccyld1.jpg",
   },
   {
-    name: "Nơi này có anh",
+    name: "Remember Me - Onionn Remix",
     author: "Sơn Tùng MTP",
-    path: "./assets/songs/nnca.mp3",
-    art: "./assets/images/nnca.jpg",
+    path: "./assets/songs/rmbm.mp3",
+    art: "./assets/images/rmbm.jpg",
   },
   {
     name: "Có Chắc Yêu Là Đây - Onionn Remix",
@@ -36,16 +36,22 @@ const songs = [
     art: "./assets/images/ccyld.jpg",
   },
   {
+    name: "Chúng Ta Của Hiện Tại",
+    author: "Sơn Tùng MTP",
+    path: "./assets/songs/ctcht.m4a",
+    art: "./assets/images/ctcht.jpg",
+  },
+  {
     name: "Cơn Mưa Ngang Qua - Disco Ver",
     author: "Sơn Tùng MTP",
     path: "./assets/songs/cmnq.mp3",
     art: "./assets/images/cmnq.png",
   },
   {
-    name: "Chúng Ta Của Hiện Tại",
+    name: "Nơi này có anh",
     author: "Sơn Tùng MTP",
-    path: "./assets/songs/ctcht.m4a",
-    art: "./assets/images/ctcht.jpg",
+    path: "./assets/songs/nnca.mp3",
+    art: "./assets/images/nnca.jpg",
   },
   {
     name: "Em Của Ngày Hôm Qua",
@@ -58,24 +64,6 @@ const songs = [
     author: "Sơn Tùng MTP",
     path: "./assets/songs/mrmsc.mp3",
     art: "./assets/images/mrmsc.jpg",
-  },
-  {
-    name: "You Of Yesterday",
-    author: "Sơn Tùng MTP",
-    path: "./assets/songs/yoy.mp3",
-    art: "./assets/images/yoy.jpg",
-  },
-  {
-    name: "Một Năm Mới Bình An",
-    author: "Sơn Tùng MTP",
-    path: "./assets/songs/mnmba.mp3",
-    art: "./assets/images/mnmba.jpg",
-  },
-  {
-    name: "Âm Thầm Bên Em",
-    author: "Sơn Tùng MTP",
-    path: "./assets/songs/atbe.mp3",
-    art: "./assets/images/atbe.jpg",
   },
   {
     name: "Muộn rồi mà sao còn - Disco Version",
@@ -94,6 +82,30 @@ const songs = [
     author: "Sơn Tùng MTP",
     path: "./assets/songs/noaa1.mp3",
     art: "./assets/images/noaa1.jpg",
+  },
+  {
+    name: "You Of Yesterday",
+    author: "Sơn Tùng MTP",
+    path: "./assets/songs/yoy.mp3",
+    art: "./assets/images/yoy.jpg",
+  },
+  {
+    name: "Âm Thầm Bên Em",
+    author: "Sơn Tùng MTP",
+    path: "./assets/songs/atbe.mp3",
+    art: "./assets/images/atbe.jpg",
+  },
+  {
+    name: "Chắc ai đó sẽ về",
+    author: "Sơn Tùng MTP",
+    path: "./assets/songs/cadsv.mp3",
+    art: "./assets/images/cadsv.jpg",
+  },
+  {
+    name: "Một Năm Mới Bình An",
+    author: "Sơn Tùng MTP",
+    path: "./assets/songs/mnmba.mp3",
+    art: "./assets/images/mnmba.jpg",
   },
   {
     name: "Em của ngày hôm qua",
@@ -292,8 +304,7 @@ function handleEvents() {
   };
   // Thay đổi âm lượng
   volume.onchange = (e)=>{
-    currentVolume = e.target.value / 100;
-    audio.volume = currentVolume;
+    audio.volume = e.target.value;
     if(e.target.value == 0){
       volume_icon.setAttribute('class','fas fa-volume-mute');
     }else{
