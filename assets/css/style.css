@@ -9,9 +9,20 @@ body {
     width: 100vw;
     height: 100vh;
     font-family: Arial;
-    /* background: url('https://images.unsplash.com/photo-1526488807855-309186804587?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80') no-repeat center center fixed;
-    background-size: cover; */
-    background: linear-gradient(45deg, #cd9cf2, #f6f3ff);
+
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    animation: gradient 15s ease infinite;
+}
+@keyframes gradient {
+    0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 .app {
     width: 350px;
@@ -217,7 +228,6 @@ body {
     margin-bottom: 5px;
     border-radius: 50%;
     border: 1px ;
-    /* background: linear-gradient(to right, #cd9cf2, #f6f3ff); */
     box-shadow: 0 0 5px #ddd;
     cursor: pointer;
 }

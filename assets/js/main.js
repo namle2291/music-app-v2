@@ -1,4 +1,9 @@
-const songs = [
+const songs = [{
+    name: "Making My Way",
+    author: "Sơn Tùng MTP",
+    path: "./assets/songs/mmw.mp3",
+    art: "./assets/images/mmw.jpg",
+  },
   {
     name: "Intro - Sky Decade",
     author: "Sơn Tùng MTP",
@@ -212,17 +217,17 @@ function renderList() {
 function renderFirstSong() {
   let currentTheme = JSON.parse(localStorage.getItem("theme"));
   let currentIndex = JSON.parse(localStorage.getItem("currentIndex"));
-  if(currentTheme!=null){
+  if (currentTheme != null) {
     document.body.style.background = "linear-gradient(" + "45deg," + `${currentTheme.from}` + "," + `${currentTheme.to}` + ")";
   }
-  if(currentIndex!=null){
+  if (currentIndex != null) {
     song_art.setAttribute("src", songs[currentIndex].art);
     song_name.innerHTML = songs[currentIndex].name;
     song_author.innerHTML = songs[currentIndex].author;
     text_animation.innerHTML = songs[currentIndex].name;
     audio.src = songs[currentIndex].path;
     volume.value = 100;
-  }else{
+  } else {
     song_art.setAttribute("src", firstSong.art);
     song_name.innerHTML = firstSong.name;
     song_author.innerHTML = firstSong.author;
@@ -232,16 +237,18 @@ function renderFirstSong() {
   }
 }
 
-function renderColorItem(){
-  colorTheme.map((e,index)=>{
+function renderColorItem() {
+  colorTheme.map((e) => {
     const color_item = document.createElement('div');
     color_item.classList.add('color-item');
     choose_theme.append(color_item);
-    color_item.style.background = 'linear-gradient(to right,'+ `${e.from}` + ',' + `${e.to}` + ')';
+    if (e.from) {
+      color_item.style.background = 'linear-gradient(to right,' + `${e.from}` + ',' + `${e.to}` + ')';
+    }
   })
 }
 
-function getCurrentSong(){
+function getCurrentSong() {
   let indexCurrent = index;
   localStorage.setItem("currentIndex", JSON.stringify(indexCurrent));
 }
@@ -298,47 +305,47 @@ function handleEvents() {
       loop_btn.style.color = "black";
     }
   };
-  song_range.onchange = (e) => {
+  song_range.addEventListener('input', (e) => {
     audio.currentTime = e.target.value;
-    // audio.play();
-  };
+  });
   // Thay đổi âm lượng
-  volume.onchange = (e)=>{
+  volume.addEventListener('input', (e) => {
     audio.volume = e.target.value;
-    if(e.target.value == 0){
-      volume_icon.setAttribute('class','fas fa-volume-mute');
-    }else{
-      volume_icon.setAttribute('class','fas fa-volume-up');
+    if (e.target.value == 0) {
+      volume_icon.setAttribute('class', 'fas fa-volume-mute');
+    } else {
+      volume_icon.setAttribute('class', 'fas fa-volume-up');
     }
-  }
-  volume_icon.onclick = (e)=>{
-    if(isMute){
-      e.target.setAttribute('class','fas fa-volume-mute');
+  })
+  volume_icon.onclick = (e) => {
+    if (isMute) {
+      e.target.setAttribute('class', 'fas fa-volume-mute');
       audio.volume = 0;
-      isMute = false ;
-    }else{
-      e.target.setAttribute('class','fas fa-volume-up');
+      isMute = false;
+    } else {
+      e.target.setAttribute('class', 'fas fa-volume-up');
       audio.volume = currentVolume;
       isMute = true;
     }
   }
   // Khi nhấn space
-  window.onkeydown = (e)=>{
-    switch(e.keyCode){
+  window.onkeydown = (e) => {
+    switch (e.keyCode) {
       case 32: // 32=> Space
-        if(!isPlaying){
+        if (!isPlaying) {
           audio.pause();
           isPlaying = false;
-        }else{
+        } else {
           audio.play();
           isPlaying = true;
         }
     }
   }
   let list_color = document.querySelectorAll('.color-item');
-  list_color.forEach((e,index) => {
-    e.onclick = ()=>{
-      chooseTheme(index);
+  list_color.forEach((e, index) => {
+    e.onclick = () => {
+      console.log(e);
+      // chooseTheme(index);
     }
   });
 }
@@ -367,6 +374,7 @@ function prevSong() {
   text_animation.innerHTML = songs[index].name;
   audio.play();
 }
+
 function nextSong() {
   index++;
   if (index >= songs.length) {
@@ -381,7 +389,10 @@ function nextSong() {
 }
 
 function displayTimer() {
-  const { duration, currentTime } = audio;
+  const {
+    duration,
+    currentTime
+  } = audio;
   song_range.max = duration;
   song_range.value = currentTime;
   current_time.innerHTML = formatTimeer(currentTime);
@@ -400,10 +411,16 @@ function formatTimeer(number) {
   }`;
 }
 
-function chooseTheme(id){
-  let {from,to} = colorTheme[id];
+function chooseTheme(id) {
+  let {
+    from,
+    to
+  } = colorTheme[id];
   document.body.style.background = "linear-gradient(" + "45deg," + `${from}` + "," + `${to}` + ")";
-  let currentTheme = {from, to};
+  let currentTheme = {
+    from,
+    to
+  };
   localStorage.setItem("theme", JSON.stringify(currentTheme));
 }
 
