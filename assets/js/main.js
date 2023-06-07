@@ -125,8 +125,7 @@ const songs = [{
     art: "./assets/images/ctktvn.jpg",
   },
 ];
-const colorTheme = [
-  {
+const colorTheme = [{
     "from": "#4facfe",
     "to": "#00f2fe",
   },
@@ -344,8 +343,7 @@ function handleEvents() {
   let list_color = document.querySelectorAll('.color-item');
   list_color.forEach((e, index) => {
     e.onclick = () => {
-      console.log(e);
-      // chooseTheme(index);
+      chooseTheme(index);
     }
   });
 }
