@@ -1,4 +1,11 @@
-const songs = [{
+const songs = [
+  {
+    name: "Muộn rồi mà sao còn - Bomatela Remix",
+    author: "Sơn Tùng MTP - Bomatela",
+    path: "./assets/songs/mrmsc_b.mp3",
+    art: "./assets/images/mrmsc_b.jpg",
+  },
+  {
     name: "Making My Way",
     author: "Sơn Tùng MTP",
     path: "./assets/songs/mmw.mp3",
