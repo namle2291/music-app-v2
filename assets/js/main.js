@@ -1,5 +1,11 @@
 const songs = [
   {
+    name: "Nơi này có anh - Bomatela Remix",
+    author: "Sơn Tùng MTP - Bomatela",
+    path: "./assets/songs/nnca_b.mp3",
+    art: "./assets/images/nnca_b.jpg",
+  },
+  {
     name: "Muộn rồi mà sao còn - Bomatela Remix",
     author: "Sơn Tùng MTP - Bomatela",
     path: "./assets/songs/mrmsc_b.mp3",
@@ -132,13 +138,14 @@ const songs = [
     art: "./assets/images/ctktvn.jpg",
   },
 ];
-const colorTheme = [{
-    "from": "#4facfe",
-    "to": "#00f2fe",
-  },
+const colorTheme = [
   {
     "from": "#cd9cf2",
     "to": "#f6f3ff",
+  },
+  {
+    "from": "#4facfe",
+    "to": "#00f2fe",
   },
   {
     "from": "#8EC5FC",
