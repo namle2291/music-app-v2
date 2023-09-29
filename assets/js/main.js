@@ -3,7 +3,7 @@ const songs = [
     name: "Có chắc yêu là đây - Bomatela Remix",
     author: "Sơn Tùng MTP - Bomatela",
     path: "./assets/songs/ccyld_b.mp3",
-    art: "./assets/images/ccyld_b.png",
+    art: "./assets/images/ccyld_b.jpg",
   },
   {
     name: "Nơi này có anh - Bomatela Remix",
