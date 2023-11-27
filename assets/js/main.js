@@ -206,9 +206,9 @@ let list_music = document.querySelector(".list-music");
 
 let choose_theme = document.querySelector(".choose-theme");
 
-var index = JSON.parse(localStorage.getItem("currentIndex"));
+var index = JSON.parse(localStorage.getItem("currentIndex")) || 0;
 let currentVolume = 0;
-let currentTime = JSON.parse(localStorage.getItem("currentTime"));
+let currentTime = JSON.parse(localStorage.getItem("currentTime")) || 0;
 let isPlaying = true;
 let isMute = true;
 let isLoop = JSON.parse(localStorage.getItem("isLoop")) || true;
