@@ -12,7 +12,10 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
   </head>
 
@@ -27,7 +30,11 @@
           alt=""
         />
         <marquee class="text-animation"></marquee>
-        <label class="btn-chosee-theme" for="choose-theme-input" style="margin-right: 10px;">
+        <label
+          class="btn-chosee-theme"
+          for="choose-theme-input"
+          style="margin-right: 10px"
+        >
           <i class="fas fa-t-shirt"></i>
         </label>
         <label class="btn-list" for="list-input">
@@ -35,9 +42,7 @@
         </label>
 
         <input type="checkbox" hidden id="choose-theme-input" />
-        <div class="choose-theme">
-
-        </div>
+        <div class="choose-theme"></div>
         <input type="checkbox" hidden id="list-input" />
         <div class="list-music"></div>
         <label for="list-input" class="overlay"></label>
@@ -58,8 +63,14 @@
           <input class="song-range-item" type="range" />
         </div>
         <div class="song-volume">
-            <i class="fas fa-volume-up" id="song-volume-icon"></i>
-            <input class="song-volume-input" max="1" min="0" step="0.01" type="range" />
+          <i class="fas fa-volume-up" id="song-volume-icon"></i>
+          <input
+            class="song-volume-input"
+            max="1"
+            min="0"
+            step="0.01"
+            type="range"
+          />
         </div>
         <div class="song-times">
           <div class="durationTime"></div>
@@ -70,13 +81,13 @@
             <i class="fas fa-undo"></i>
           </div>
           <div class="prev-btn">
-            <i class="fas fa-hand-point-left"></i>
+            <i class="fa-solid fa-arrow-left"></i>
           </div>
           <div class="play-btn">
             <i class="fas fa-play-circle"></i>
           </div>
           <div class="next-btn">
-            <i class="fas fa-hand-point-right"></i>
+            <i class="fa-solid fa-arrow-right"></i>
           </div>
           <div class="random-btn">
             <i class="fas fa-random"></i>

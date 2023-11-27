@@ -146,40 +146,40 @@ const songs = [
 ];
 const colorTheme = [
   {
-    "from": "#cd9cf2",
-    "to": "#f6f3ff",
+    from: "#cd9cf2",
+    to: "#f6f3ff",
   },
   {
-    "from": "#4facfe",
-    "to": "#00f2fe",
+    from: "#4facfe",
+    to: "#00f2fe",
   },
   {
-    "from": "#8EC5FC",
-    "to": "#E0C3FC",
+    from: "#8EC5FC",
+    to: "#E0C3FC",
   },
   {
-    "from": "#CE9FFC",
-    "to": "#7367F0",
+    from: "#CE9FFC",
+    to: "#7367F0",
   },
   {
-    "from": "#2af598",
-    "to": "#009efd",
+    from: "#2af598",
+    to: "#009efd",
   },
   {
-    "from": "#434343",
-    "to": "#ffffff",
+    from: "#434343",
+    to: "#ffffff",
   },
   {
-    "from": "#f9d423",
-    "to": "#ff4e50",
+    from: "#f9d423",
+    to: "#ff4e50",
   },
   {
-    "from": "#00dbde",
-    "to": "#fc00ff",
+    from: "#00dbde",
+    to: "#fc00ff",
   },
   {
-    "from": "#65799b",
-    "to": "#5e2563",
+    from: "#65799b",
+    to: "#5e2563",
   },
 ];
 let song_art = document.querySelector(".song-art-item");
@@ -191,8 +191,8 @@ let song_range = document.querySelector(".song-range-item");
 let text_animation = document.querySelector(".text-animation");
 let duration_time = document.querySelector(".durationTime");
 let current_time = document.querySelector(".currentTime");
-let volume = document.querySelector('.song-volume-input');
-let volume_icon = document.querySelector('#song-volume-icon');
+let volume = document.querySelector(".song-volume-input");
+let volume_icon = document.querySelector("#song-volume-icon");
 
 let prev_btn = document.querySelector(".prev-btn");
 let play_btn = document.querySelector(".play-btn");
@@ -201,23 +201,24 @@ let loop_btn = document.querySelector(".loop-btn");
 let random_btn = document.querySelector(".random-btn");
 
 let audio = document.querySelector("audio");
+
 let list_music = document.querySelector(".list-music");
 
 let choose_theme = document.querySelector(".choose-theme");
 
-var index = 0;
+var index = JSON.parse(localStorage.getItem("currentIndex"));
 let currentVolume = 0;
+let currentTime = JSON.parse(localStorage.getItem("currentTime"));
 let isPlaying = true;
 let isMute = true;
-let isLoop = true;
+let isLoop = JSON.parse(localStorage.getItem("isLoop")) || true;
+let isRandom = JSON.parse(localStorage.getItem("isRandom")) || false;
 let firstSong = songs[index];
 
 function renderList() {
   let html = songs.map((e, index) => {
     return `
-      <label for="list-input" class="list-item" onclick="handlePlay(${
-        index
-      })" key="${index}">
+      <label for="list-input" class="list-item" onclick="handlePlay(${index})" key="${index}">
               <div class="list-avatar">
                   <img class="list-avatar-item"
                   src="${e.art}" alt="">
@@ -232,12 +233,17 @@ function renderList() {
   list_music.innerHTML = html.join(" ");
 }
 
-
 function renderFirstSong() {
   let currentTheme = JSON.parse(localStorage.getItem("theme"));
   let currentIndex = JSON.parse(localStorage.getItem("currentIndex"));
   if (currentTheme != null) {
-    document.body.style.background = "linear-gradient(" + "45deg," + `${currentTheme.from}` + "," + `${currentTheme.to}` + ")";
+    document.body.style.background =
+      "linear-gradient(" +
+      "45deg," +
+      `${currentTheme.from}` +
+      "," +
+      `${currentTheme.to}` +
+      ")";
   }
   if (currentIndex != null) {
     song_art.setAttribute("src", songs[currentIndex].art);
@@ -245,6 +251,7 @@ function renderFirstSong() {
     song_author.innerHTML = songs[currentIndex].author;
     text_animation.innerHTML = songs[currentIndex].name;
     audio.src = songs[currentIndex].path;
+    audio.currentTime = currentTime;
     volume.value = 100;
   } else {
     song_art.setAttribute("src", firstSong.art);
@@ -254,17 +261,28 @@ function renderFirstSong() {
     audio.src = firstSong.path;
     volume.value = 100;
   }
+  if (!isRandom) {
+    random_btn.style.color = "black";
+  } else {
+    random_btn.style.color = "crimson";
+  }
+  if (!isLoop) {
+    loop_btn.style.color = "black";
+  } else {
+    loop_btn.style.color = "crimson";
+  }
 }
 
 function renderColorItem() {
   colorTheme.map((e) => {
-    const color_item = document.createElement('div');
-    color_item.classList.add('color-item');
+    const color_item = document.createElement("div");
+    color_item.classList.add("color-item");
     choose_theme.append(color_item);
     if (e.from) {
-      color_item.style.background = 'linear-gradient(to right,' + `${e.from}` + ',' + `${e.to}` + ')';
+      color_item.style.background =
+        "linear-gradient(to right," + `${e.from}` + "," + `${e.to}` + ")";
     }
-  })
+  });
 }
 
 function getCurrentSong() {
@@ -276,6 +294,9 @@ displayTimer();
 let timer = setInterval(() => {
   displayTimer();
   if (audio.ended) {
+    if (isRandom) {
+      index = Math.floor(Math.random() * songs.length);
+    }
     nextSong();
   }
 }, 1000);
@@ -303,7 +324,6 @@ function handleEvents() {
     isPlaying = true;
     clearInterval(timer);
   };
-  let cc = 0;
   // Phát bài trước đó
   prev_btn.onclick = () => {
     prevSong();
@@ -323,34 +343,47 @@ function handleEvents() {
       isLoop = true;
       loop_btn.style.color = "black";
     }
+    localStorage.setItem("isLoop", JSON.stringify(isLoop));
   };
-  song_range.addEventListener('input', (e) => {
+  // Nút random
+  random_btn.onclick = () => {
+    if (isRandom) {
+      isRandom = false;
+      random_btn.style.color = "black";
+    } else {
+      isRandom = true;
+      random_btn.style.color = "crimson";
+    }
+    localStorage.setItem("isRandom", JSON.stringify(isRandom));
+  };
+  song_range.addEventListener("input", (e) => {
     audio.currentTime = e.target.value;
+    localStorage.setItem("currentTime", e.target.value);
   });
   // Thay đổi âm lượng
-  volume.addEventListener('input', (e) => {
+  volume.addEventListener("input", (e) => {
     audio.volume = e.target.value;
     if (e.target.value == 0) {
-      volume_icon.setAttribute('class', 'fas fa-volume-mute');
+      volume_icon.setAttribute("class", "fas fa-volume-mute");
     } else {
-      volume_icon.setAttribute('class', 'fas fa-volume-up');
+      volume_icon.setAttribute("class", "fas fa-volume-up");
     }
-  })
+  });
   volume_icon.onclick = (e) => {
     if (isMute) {
-      e.target.setAttribute('class', 'fas fa-volume-mute');
+      e.target.setAttribute("class", "fas fa-volume-mute");
       audio.volume = 0;
       isMute = false;
     } else {
-      e.target.setAttribute('class', 'fas fa-volume-up');
+      e.target.setAttribute("class", "fas fa-volume-up");
       audio.volume = currentVolume;
       isMute = true;
     }
-  }
+  };
   // Khi nhấn space
   window.onkeydown = (e) => {
     switch (e.keyCode) {
-      case 32: // 32=> Space
+      case 32: // 32 => Space
         if (!isPlaying) {
           audio.pause();
           isPlaying = false;
@@ -359,12 +392,12 @@ function handleEvents() {
           isPlaying = true;
         }
     }
-  }
-  let list_color = document.querySelectorAll('.color-item');
+  };
+  let list_color = document.querySelectorAll(".color-item");
   list_color.forEach((e, index) => {
     e.onclick = () => {
       chooseTheme(index);
-    }
+    };
   });
 }
 
@@ -381,7 +414,11 @@ function handlePlay(id) {
 }
 
 function prevSong() {
-  index--;
+  if (isRandom) {
+    index = Math.floor(Math.random() * songs.length);
+  } else {
+    index--;
+  }
   if (index < 0) {
     index = songs.length - 1;
   }
@@ -394,7 +431,12 @@ function prevSong() {
 }
 
 function nextSong() {
-  index++;
+  if (isRandom) {
+    index = Math.floor(Math.random() * songs.length);
+  } else {
+    index++;
+  }
+
   if (index >= songs.length) {
     index = 0;
   }
@@ -407,13 +449,13 @@ function nextSong() {
 }
 
 function displayTimer() {
-  const {
-    duration,
-    currentTime
-  } = audio;
+  const { duration, currentTime } = audio;
   song_range.max = duration;
   song_range.value = currentTime;
   current_time.innerHTML = formatTimeer(currentTime);
+
+  localStorage.setItem("currentTime", currentTime);
+
   if (!duration) {
     duration_time.innerHTML = "00:00";
   } else {
@@ -430,14 +472,12 @@ function formatTimeer(number) {
 }
 
 function chooseTheme(id) {
-  let {
-    from,
-    to
-  } = colorTheme[id];
-  document.body.style.background = "linear-gradient(" + "45deg," + `${from}` + "," + `${to}` + ")";
+  let { from, to } = colorTheme[id];
+  document.body.style.background =
+    "linear-gradient(" + "45deg," + `${from}` + "," + `${to}` + ")";
   let currentTheme = {
     from,
-    to
+    to,
   };
   localStorage.setItem("theme", JSON.stringify(currentTheme));
 }
